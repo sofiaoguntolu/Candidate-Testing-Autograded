@@ -33,18 +33,24 @@ function askQuestion() {
 }
 
 function gradeQuiz(candidateAnswers) {
-
+  let numberCorrect = 0;
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly //
   for (i = 0; i < 5; ++i){ 
-    if (candidateAnswers[i] === correctAnswers[i]){
-      console.log("Correct! Great jobA!");
+    console.log(`Correct Answer: ${correctAnswers[i]} \nCandidate Answer: ${candidateAnswers[i]}`);
+    if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()){
+      console.log("Correct! Great job!");
+      ++numberCorrect;
     } else {
       console.log("Incorrect. Maybe next time.");
     }
   }
 
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
-
+  let grade = numberCorrect / 5 * 100;  //TODO 3.2 use this variable to calculate the candidates score.
+  if (grade >= 80){
+    console.log(`Congratulations! You passed with a score of ${grade}%.`);
+  } else {
+    console.log(`You have failed with a score of ${grade}%. Better luck next time.`);
+  }
 
   return grade;
 }
